@@ -1,0 +1,16 @@
+int RandomPartition(vector<int> &A, int p, int q) {
+    srand(time(0));
+    int k = rand() % A.size();
+    swap(A[p], A[k]);
+    int x = A[p];
+    int i = p;
+    for (int j = p + 1; j < q; ++j) {
+        if (A[j] <= x) {
+            ++i;
+            swap(A[j], A[i]);
+        }
+    }
+    swap(A[p], A[i]);
+    return i;
+}
+
