@@ -14,3 +14,11 @@ int RandomPartition(vector<int> &A, int p, int q) {
     return i;
 }
 
+void QuickSort(vector<int> &A, int p, int q) {
+    if (q > p) {
+        int i = RandomPartition(A, p, q);
+        QucikSort(A, p, i-1);
+        QuickSort(A, i+1, q);
+    }
+}
+
