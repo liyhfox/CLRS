@@ -2,7 +2,7 @@
 
 // Select sort
 // in-place, unstable
-// bc:O(n*n) wc:(n*n)
+// bc:O(n*n) wc:O(n*n)
 void SelectSort(std::vector<int>& A)
 {
     for (int i = 0; i < A.size() - 1; ++i) {
