@@ -1,0 +1,45 @@
+#include <vector>
+
+// Heap sort
+// in-place, unstable
+// bc: O(nlgn) wc:O(nlgn)
+#define PARENT(x) x/2
+#define LEFT(x) x*2
+#define RIGHT(x) x*2 + 1
+
+void MaxHeapIFY(std::vector<int>& A, int i, int heapSize)
+{
+    int l = LEFT(i);
+    int r = RIGHT(i);
+    
+    int largest;
+    if (l <= heapSize && A[l] >= A[i])
+        largest = l;
+    else
+        largest = i;
+    
+    if (r <= heapSize && A[r] >= A[largest])
+        largest = r;
+    
+    if (largest != i) {
+        std::swap(A[i], A[largest]);
+        MaxHeapIFY(A, largest, heapSize);
+    }
+}
+
+void BuildMaxHeap(std::vector<int>& A, int heapSize)
+{
+    for (int i = (A.size() - 1) / 2; i >= 0; --i) {
+        MaxHeapIFY(A, i, heapSize);
+    }
+}
+
+void HeapSort(std::vector<int>& A, int heapSize)
+{
+    BuildMaxHeap(A, heapSize);
+    for (int i = heapSize; i >= 1; --i) {
+        std::swap(A[0], A[i]);
+        --heapSize;
+        MaxHeapIFY(A, 0, heapSize);
+    }
+}
