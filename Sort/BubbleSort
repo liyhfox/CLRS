@@ -1,0 +1,19 @@
+#include <vector>
+
+// Bubble sort
+// in-place, stable
+// bc: O(n) wc:(n*n)
+void BubbleSort(std::vector<int>& A)
+{
+    bool found = true;
+    for (int i = 0; i < A.size(); ++i) {
+        if (!found) return;
+        found = false;
+        for (int j = A.size() - 1; j >= i + 1; --j) {
+            if (A[j] < A[j-1]) {
+                std::swap(A[j], A[j-1]);
+                found = true;
+            }
+        }
+    }
+}
