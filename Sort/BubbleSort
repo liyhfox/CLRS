@@ -2,7 +2,7 @@
 
 // Bubble sort
 // in-place, stable
-// bc: O(n) wc:(n*n)
+// bc: O(n) wc:O(n*n)
 void BubbleSort(std::vector<int>& A)
 {
     bool found = true;
