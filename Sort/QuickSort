@@ -1,4 +1,8 @@
-int RandomPartition(vector<int> &A, int p, int q) {
+#include <vector>
+// Quick sort
+// in-place, stable
+// bc:O(nlgn) wc:O(nlgn)
+int RandomPartition(std::vector<int> &A, int p, int q) {
     srand(time(0));
     int k = rand() % (q - p) + p;
     swap(A[p], A[k]);
@@ -7,14 +11,14 @@ int RandomPartition(vector<int> &A, int p, int q) {
     for (int j = p + 1; j <= q; ++j) {
         if (A[j] <= x) {
             ++i;
-            swap(A[j], A[i]);
+            std::swap(A[j], A[i]);
         }
     }
-    swap(A[p], A[i]);
+    std::swap(A[p], A[i]);
     return i;
 }
 
-void QuickSort(vector<int> &A, int p, int q) {
+void QuickSort(std::vector<int> &A, int p, int q) {
     if (q > p) {
         int i = RandomPartition(A, p, q);
         QucikSort(A, p, i-1);
