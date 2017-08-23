@@ -1,0 +1,43 @@
+#include <vector>
+
+// Merge sort
+// out-place, stable
+// bc: O(nlgn) wc: O(nlgn)
+void Merge(std::vector<int>& A, int p, int r, int q)
+{
+    //int n1 = r - p + 1;
+    //int n2 = q - r;
+    std::vector<int> L;
+    for (int i = p; i <= r; ++i) {
+        L.push_back(A[i]);
+    }
+    L.push_back(INT_MAX);
+    
+    std::vector<int> R;
+    for (int j = r+1; j <= q; ++j) {
+        R.push_back(A[j]);
+    }
+    R.push_back(INT_MAX);
+    
+    int i = 0;
+    int j = 0;
+    for (int k = p; k <= q; ++k) {
+        if (L[i] <= R[j]) {
+            A[k] = L[i];
+            ++i;
+        } else {
+            A[k] = R[j];
+            ++j;
+        }
+    }
+    
+}
+void MergeSort(std::vector<int>& A, int p, int q)
+{
+    if (p < q) {
+        int r = (p + q) / 2;
+        MergeSort(A, p, r);
+        MergeSort(A, r + 1, q);
+        Merge(A, p, r, q);
+    }
+}
